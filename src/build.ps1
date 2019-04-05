@@ -34,10 +34,6 @@ $manifestParameters = @{
 	ModuleVersion = $version
 	Tags = @("universaldashboard")
 	ReleaseNotes = "Initial release"
-	FunctionsToExport = @(
-		"New-UDComponent"
-	)
-  RequiredModules = @()
 }
 
 New-ModuleManifest @manifestParameters
