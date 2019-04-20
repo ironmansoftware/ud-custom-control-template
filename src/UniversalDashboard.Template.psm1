@@ -23,32 +23,6 @@ foreach($item in $Maps)
     [UniversalDashboard.Services.AssetService]::Instance.RegisterScript($item.FullName) | Out-Null
 }
 
-<#
-    Sample control function. This function must have an ID and return a hash table 
-#> 
-function New-UDComponent {
-    param(
-        [Parameter()]
-        [string]$Id = (New-Guid).ToString(),
-        [Parameter()]
-        [int]$Text
-    )
-
-    End {
-        @{
-            # The AssetID of the main JS File
-            assetId = $AssetId 
-            # Tell UD this is a plugin
-            isPlugin = $true 
-            # This ID must be the same as the one used in the JavaScript to register the control with UD
-            type = "ud-knob"
-            # An ID is mandatory 
-            id = $Id
-
-            # This is where you can put any other properties. They are passed to the React control's props
-            # The keys are case-sensitive in JS. 
-            text = $Text
-            
-        }
-    }
-}
+Get-ChildItem (Join-Path $PSScriptRoot "Scripts") -File -Filter "*.ps1" | ForEach-Object {
+    . $_.FullName
+} 

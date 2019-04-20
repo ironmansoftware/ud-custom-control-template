@@ -1,2 +1,2 @@
-import UDComponent from './component';
-UniversalDashboard.register("ud-component", UDComponent);
+import <%=$PLASTER_PARAM_ControlName%> from './<%=$PLASTER_PARAM_ControlName%>';
+UniversalDashboard.register("<%=$PLASTER_PARAM_ControlTypeName%>", <%=$PLASTER_PARAM_ControlName%>);
