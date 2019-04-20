@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest
+  schemaVersion="1.1"
+  templateType="Project" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>UDCustomControl</name>
+    <id>f2d5ff43-7264-433a-b6f6-28225aab087b</id>
+    <version>1.0.0</version>
+    <title>Universal Dashboard Custom Control</title>
+    <description>Create new universal dashboard custom control using powershell and react.js</description>
+    <author>Alon Gvili</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+  
+  <parameter name='ControlName'
+           type='text'
+           prompt='Enter the name of the control'/>
+
+  <parameter name='ControlTypeName'
+           type='text'
+           prompt='Enter the type name of the control'/>
+
+   <parameter name='ControlVersion'
+           type='text'
+           default='1.0.0'
+           prompt='Enter the version number for the control'/>        
+
+   <parameter name='CommandName'
+           type='text'
+           prompt='Enter the name for the command'/>        
+
+   <parameter name='ReleaseNotes'
+           type='text'
+           prompt='Enter some release notes'/>        
+
+   <parameter name='Author'
+           type='text'
+           prompt='Enter author name'/>        
+
+   <parameter name='Description'
+           type='text'
+           prompt='Enter control description'/>        
+
+  </parameters>
+  <content>
+  
+  <templateFile source='src\webpack.config.js'
+              destination='src\webpack.config.js'/>
+
+  <templateFile source='src\UniversalDashboard.Template.psm1'
+              destination='src\UniversalDashboard.${PLASTER_PARAM_ControlName}.psm1'/>
+
+  <templateFile source='src\package.json'
+              destination='src\package.json'/>
+
+  <templateFile source='src\build.ps1'
+              destination='src\build.ps1'/>
+
+  <templateFile source='src\Components\Component.jsx'
+              destination='src\Components\${PLASTER_PARAM_ControlName}.jsx'/>
+
+  <templateFile source='src\Components\index.js'
+              destination='src\Components\index.js'/>
+
+  <templateFile source='src\Tests\component.tests.ps1'
+              destination='src\Tests\${PLASTER_PARAM_ControlName}.tests.ps1'/>
+
+  <templateFile source='src\Scripts\Component.ps1'
+              destination='src\Scripts\${PLASTER_PARAM_CommandName}.ps1'/>
+
+  <file source='src\.babelrc'
+                destination='src\.babelrc' />
+
+  <file source='.gitignore'
+                destination='.gitignore' />
+  
+  </content>
+</plasterManifest>
