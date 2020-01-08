@@ -18,7 +18,7 @@
 function <%=$PLASTER_PARAM_CommandName%> {
     param(
         [Parameter()]
-        [string]$Id = (New-Guid).ToString(),
+        [string]$Id = ([Guid]::NewGuid()),
         [Parameter()]
         [string]$Text
     )
